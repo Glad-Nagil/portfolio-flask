@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Portfolio de Nagil — communication, création de contenu, design graphique et UI/UX.">
+  <title>Nagil — Communication & Design</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="#accueil" aria-label="Nagil, accueil">
+    <span class="brand-mark">N</span><span><strong>Nagil</strong><small>Communication & Design</small></span>
+  </a>
+  <button class="menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
+  <nav class="nav" id="nav">
+    <a href="#accueil">Accueil</a><a href="#apropos">À propos</a><a href="#services">Services</a>
+    <a href="#portfolio">Portfolio</a><a href="#formations">Formations</a><a href="#contact">Contact</a>
+  </nav>
+  <a class="btn btn-orange header-cta" href="#contact">Réserver un appel</a>
+</header>
+
+<main>
+<section class="hero" id="accueil">
+  <div class="hero-pattern"></div><div class="hero-orb"></div>
+  <div class="hero-copy">
+    <span class="eyebrow eyebrow-light">COMMUNICATION · CRÉATION · DESIGN</span>
+    <h1>Je transforme vos idées<br>en messages, en images<br>et en <em>expériences.</em></h1>
+    <p>Créateur de contenu, formateur en communication<br class="desktop-only"> et designer UI/UX.<br>J’aide les particuliers et les entreprises à communiquer,<br class="desktop-only"> convaincre et se démarquer.</p>
+    <div class="hero-actions"><a class="btn btn-orange" href="#services">Voir mes services</a><a class="btn btn-outline" href="#portfolio">Voir mon portfolio</a></div>
+  </div>
+  <div class="hero-person">
+    <div class="person-circle"></div>
+    <img src="{{ url_for('static', filename='images/portrait-hero.png') }}" alt="Portrait de Nagil" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
+    <div class="image-placeholder hero-placeholder">Ajoutez votre photo<br><small>portrait-hero.png</small></div>
+  </div>
+
+<div class="skill-float float-design">
+    <strong>Design graphique</strong>
+    <p>Logos<br>Affiches<br>Branding</p>
+
+    <img class="software-logo ai"
+         src="{{ url_for('static', filename='images/illustrator.png') }}"
+         alt="Adobe Illustrator">
+
+    <img class="software-logo ps"
+         src="{{ url_for('static', filename='images/photoshop.png') }}"
+         alt="Adobe Photoshop">
+</div>
+
+<div class="skill-float float-video">
+    <strong>Montage vidéo</strong>
+    <p>Premiere Pro<br>CapCut</p>
+
+    <img class="software-logo pr"
+         src="{{ url_for('static', filename='images/premiere-pro.png') }}"
+         alt="Adobe Premiere Pro">
+
+    <img class="software-logo cp"
+         src="{{ url_for('static', filename='images/capcut.png') }}"
+         alt="CapCut">
+</div>
+
+<div class="skill-float float-ux">
+    <strong>UI/UX Design</strong>
+    <p>Figma<br>Prototypage</p>
+
+    <img class="software-logo figma-logo"
+         src="{{ url_for('static', filename='images/figma.png') }}"
+         alt="Figma">
+</div>
+  <span class="spark spark-one">✦</span><span class="spark spark-two">✧</span>
+</section>
+
+<section class="about section-wrap" id="apropos">
+  <div class="about-photo">
+    <div class="photo-ring"></div>
+    <img src="{{ url_for('static', filename='images/portrait-about.jpg') }}" alt="Portrait de Nagil" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
+    <div class="image-placeholder about-placeholder">Votre portrait<br><small>portrait-about.jpg</small></div>
+    <div class="signature">Nagil Nzaou</div>
+  </div>
+  <div class="about-copy">
+    <span class="eyebrow">À PROPOS DE MOI</span><h2>Qui suis-<em>je ?</em></h2>
+    <p>Je suis Nagil NZAOU, passionné par la communication, les technologies informatiques, le design et la création de contenu.</p>
+    <p>J’accompagne les personnes à développer leur compétence en communication (prise de parole en public), j’accompagne aussi les entreprises à développer leur visibilité, améliorer leur image et transmettre leurs messages avec impact.</p>
+    <p>Ma mission : donner vie à vos idées avec créativité, stratégie et émotion.</p>
+  </div>
+  <aside class="skills-panel"><h3>MES COMPÉTENCES</h3>
+    {% for skill in skills %}<div class="skill-row"><span class="skill-icon {{ skill.color }}">{{ skill.icon }}</span><div><strong>{{ skill.title }}</strong><p>{{ skill.text }}</p></div></div>{% endfor %}
+  </aside>
+</section>
+
+<section class="services section-wrap" id="services">
+  <div class="section-heading"><span class="eyebrow">MES SERVICES</span><h2>Ce que je peux faire <em>pour vous</em></h2></div>
+  <div class="service-grid">
+{% for service in services %}
+<article class="service-card">
+
+    <div class="service-icon {{ service.color }}">
+        <img
+            src="{{ url_for('static', filename='images/services/' ~ service['image']) }}"
+            alt="{{ service['title'] }}"
+            class="service-icon-image"
+        >
+    </div>
+
+    <h3>{{ service['title'] }}</h3>
+
+    {% if service['subtitle'] %}
+        <h4>{{ service['subtitle'] }}</h4>
+    {% endif %}
+
+    <ul>
+        {% for item in service['items'] %}
+            <li>{{ item }}</li>
+        {% endfor %}
+    </ul>
+
+</article>
+{% endfor %}
+</div>
+</section>
+
+<section class="portfolio section-wrap" id="portfolio">
+  <div class="section-heading"><span class="eyebrow">MON PORTFOLIO</span><h2>Quelques <em>réalisations</em></h2></div>
+  <div class="filters" role="group" aria-label="Filtrer les projets">
+    <button class="filter active" data-filter="Tout">Tout</button><button class="filter" data-filter="UI/UX Design">UI/UX Design</button><button class="filter" data-filter="Design graphique">Design graphique</button><button class="filter" data-filter="Montage vidéo">Montage vidéo</button>
+  </div>
+  <div class="project-grid">
+{% for project in projects %}
+<article class="project-card">
+
+    <div class="project-media">
+        {% if project.get('type') == 'video' %}
+            <video
+                class="project-video"
+                autoplay
+                muted
+                loop
+                playsinline
+                preload="metadata">
+                <source
+                    src="{{ url_for('static', filename='videos/' ~ project['video']) }}"
+                    type="video/mp4">
+                Votre navigateur ne prend pas en charge la vidéo.
+            </video>
+        {% else %}
+          <img
+    src="{{ url_for('static', filename=project['image']) }}"
+    alt="{{ project['title'] }}"
+    loading="lazy">
+        {% endif %}
+    </div>
+    <div class="project-info">
+        <span class="project-category">
+            {{ project['category'] }}
+        </span>
+
+        <h3>{{ project['title'] }}</h3>
+
+        <p>{{ project['description'] }}</p>
+    </div>
+
+</article>
+{% endfor %}
+</div>
+</section>
+
+<section class="trainings section-wrap" id="formations">
+  <div class="section-heading"><span class="eyebrow">MES FORMATIONS</span><h2>Formations & <em>Accompagnements</em></h2></div>
+  <div class="training-grid">{% for training in trainings %}
+    <article class="training-card"><h3>{{ training.title }}</h3><p>{{ training.text }}</p><span>{{ training.format }}</span><a href="#contact" class="btn btn-outline-orange">Rejoindre la formation</a></article>
+  {% endfor %}</div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="contact-copy"><span>CONTACTEZ-MOI</span><h2>Prêt à travailler<br>ensemble ?</h2><p>Vous avez un projet, une question ou une proposition de collaboration ? Écrivez-moi, je vous répondrai dans les plus brefs délais.</p></div>
+    <div class="contact-form-wrap">
+      {% with messages = get_flashed_messages(with_categories=true) %}{% if messages %}{% for category, message in messages %}<div class="flash {{ category }}">{{ message }}</div>{% endfor %}{% endif %}{% endwith %}
+      <form
+        action="https://formbold.com/s/6vk20" method="POST" class="contact-form" autocomplete="off">
+        <div class="form-row"><input name="name" placeholder="Votre nom" required><input name="email" type="email" placeholder="Votre email" required></div>
+        <input name="subject" placeholder="Sujet" required><textarea name="message" placeholder="Votre message" rows="4" required></textarea>
+        <button class="btn btn-blue" type="submit">Envoyer votre message</button>
+      </form>
+    </div>
+    <div class="contact-photo"><img src="{{ url_for('static', filename='images/portrait-contact.png') }}" alt="Nagil" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'"><div class="image-placeholder contact-placeholder">portrait-contact.png</div></div>
+  </div>
+</section>
+</main>
+<footer><span>© {{ 2026 }} Nagil — Communication & Design</span><a href="#accueil">Retour en haut ↑</a></footer>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+
+# Environnement Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+
+# Variables confidentielles
+.env
+.env.*
+!.env.example
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+
+# Vidéos volumineuses
+static/videos/*.mp4
+static/videos/*.mov
+static/videos/*.avi
+static/videos/*.mkv
+
+# Fichiers temporaires
+*.log
