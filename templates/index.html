@@ -138,9 +138,11 @@
       {% if project.get('type') == 'video' %}
           <video
               class="project-video"
-              controls
+              autoplay
+              muted
+              loop
               playsinline
-              preload="metadata">
+              preload="auto">
               <source
                   src="https://yamvqdzdf5gdvmfv.public.blob.vercel-storage.com/montage-video.mp4"
                   type="video/mp4">
