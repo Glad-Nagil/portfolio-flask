@@ -143,3 +143,169 @@
     height: 100%;
     object-fit: cover;
 }
+
+
+/* =========================================
+   FORMATIONS - STYLE PREMIUM MINIMALISTE
+========================================= */
+
+.trainings {
+    padding: 100px 0;
+    background: #FFFFFF;
+    overflow: hidden;
+}
+
+.trainings .section-heading {
+    text-align: center;
+    margin-bottom: 55px;
+}
+
+.trainings .eyebrow {
+    color: #F47C20;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.trainings .section-heading h2 {
+    margin-top: 14px;
+    color: #202020;
+    font-size: clamp(28px, 4vw, 38px);
+    font-weight: 750;
+}
+
+.trainings .section-heading h2 span {
+    color: #F47C20;
+}
+
+/* Grille */
+.training-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px;
+}
+
+/* Cartes */
+.training-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 300px;
+    padding: 35px 30px;
+    background: #FFFFFF;
+    border: 1px solid #EEEEEE;
+    border-radius: 18px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.045);
+    transition: all 0.35s ease;
+    overflow: hidden;
+}
+
+/* Accent orange */
+.training-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 45px;
+    height: 4px;
+    background: #F47C20;
+    transition: width 0.35s ease;
+}
+
+.training-card:hover::before {
+    width: 100%;
+}
+
+.training-card:hover {
+    transform: translateY(-8px);
+    border-color: #F2D6C3;
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.09);
+}
+
+/* Titres */
+.training-card h3 {
+    color: #202020;
+    font-size: 21px;
+    font-weight: 750;
+    line-height: 1.4;
+    margin-bottom: 16px;
+    transition: color 0.3s ease;
+}
+
+.training-card:hover h3 {
+    color: #F47C20;
+}
+
+/* Description */
+.training-card p {
+    color: #686868;
+    font-size: 14px;
+    line-height: 1.85;
+    margin-bottom: 18px;
+}
+
+/* Informations */
+.training-card span {
+    color: #999999;
+    font-size: 12px;
+    margin-bottom: 28px;
+}
+
+/* Bouton */
+.training-card .btn.btn-outline-orange {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-start;
+    margin-top: auto;
+    padding: 12px 23px;
+    border: 1px solid #F47C20;
+    border-radius: 6px;
+    background: #FFFFFF;
+    color: #F47C20;
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.training-card .btn.btn-outline-orange:hover {
+    background: #F47C20;
+    color: #FFFFFF;
+    box-shadow: 0 6px 18px rgba(244, 124, 32, 0.2);
+}
+
+/* Tablettes */
+@media (max-width: 900px) {
+    .training-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 22px;
+    }
+}
+
+/* Mobiles */
+@media (max-width: 600px) {
+    .trainings {
+        padding: 70px 0;
+    }
+
+    .training-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .training-card {
+        min-height: 270px;
+        padding: 30px 25px;
+    }
+}
+
+/* Accessibilité */
+@media (prefers-reduced-motion: reduce) {
+    .training-card,
+    .training-card::before,
+    .training-card h3,
+    .training-card .btn {
+        transition: none;
+    }
+}
