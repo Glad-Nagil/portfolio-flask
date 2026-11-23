@@ -134,25 +134,25 @@
 <article class="project-card">
 
     <div class="project-media">
-        {% if project.get('type') == 'video' %}
-            <video
-                class="project-video"
-                autoplay
-                muted
-                loop
-                playsinline
-                preload="metadata">
-                <source
-                    src="{{ url_for('static', filename='videos/' ~ project['video']) }}"
-                    type="video/mp4">
-                Votre navigateur ne prend pas en charge la vidéo.
-            </video>
-        {% else %}
+        
+      {% if project.get('type') == 'video' %}
+          <video
+              class="project-video"
+              controls
+              playsinline
+              preload="metadata">
+              <source
+                  src="https://yamvqdzdf5gdvmfv.public.blob.vercel-storage.com/montage-video.mp4"
+                  type="video/mp4">
+              Votre navigateur ne prend pas en charge la vidéo.
+          </video>
+      {% else %}
           <img
-    src="{{ url_for('static', filename=project['image']) }}"
-    alt="{{ project['title'] }}"
-    loading="lazy">
-        {% endif %}
+              src="{{ url_for('static', filename=project['image']) }}"
+              alt="{{ project['title'] }}"
+              loading="lazy">
+      {% endif %}
+
     </div>
     <div class="project-info">
         <span class="project-category">
